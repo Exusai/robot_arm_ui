@@ -23,6 +23,7 @@ class _DropDownState extends State<DropDown> {
       onChanged: (String? value) {
         setState(() {
           dropdownValue = value!;
+          print(dropdownValue);
         });
       },
     );
