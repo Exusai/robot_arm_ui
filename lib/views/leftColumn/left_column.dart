@@ -15,7 +15,7 @@ class LeftColumn extends StatelessWidget {
       // TODO: if not vertical
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,6 +28,7 @@ class LeftColumn extends StatelessWidget {
               RadialMenu(),
               SizedBox(height: 20,),
               Text('Tipo de cajas a tomar del pallet objetivo', style: Theme.of(context).textTheme.bodyMedium),
+              SizedBox(height: 10,),
               DropDown(),
               SizedBox(height: 20,),
               Row(
@@ -41,7 +42,6 @@ class LeftColumn extends StatelessWidget {
               Text('Distribución estimada de cajas', style: Theme.of(context).textTheme.bodyMedium),
               SizedBox(height: 10,),
               Image.network('https://via.placeholder.com/512x512')
-      
             ],
           ),
         ),
