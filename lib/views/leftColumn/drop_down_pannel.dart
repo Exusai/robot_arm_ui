@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:robot_arm_ui/controllers/robot.dart';
 
 class DropDown extends StatefulWidget {
   const DropDown({Key? key}) : super(key: key);
@@ -12,6 +14,8 @@ class _DropDownState extends State<DropDown> {
 
   @override
   Widget build(BuildContext context) {
+    final Robot robot = context.watch<Robot?>()!;
+    
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       decoration: BoxDecoration(
@@ -33,7 +37,8 @@ class _DropDownState extends State<DropDown> {
           onChanged: (String? value) {
             setState(() {
               dropdownValue = value!;
-              print(dropdownValue);
+              robot.changeBoxType(value);
+              //print(dropdownValue);
             });
           },
         ),

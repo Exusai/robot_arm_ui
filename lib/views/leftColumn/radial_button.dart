@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:group_radio_button/group_radio_button.dart';
+import 'package:provider/provider.dart';
+import 'package:robot_arm_ui/controllers/robot.dart';
 
 class RadialMenu extends StatefulWidget {
   const RadialMenu({Key? key}) : super(key: key);
@@ -14,11 +16,14 @@ class _RadialMenuState extends State<RadialMenu> {
 
   @override
   Widget build(BuildContext context) {
+    final Robot robot = context.watch<Robot?>()!;
+
     return RadioGroup<String>.builder(
       groupValue: radialValue,
       onChanged: (String? value) => setState(() {
         radialValue = value!;
-        print(radialValue);
+        //widget.robot.horizontalSucker = !widget.robot.horizontalSucker;
+        print(robot.horizontalSucker);
       }),
       items: _status,
       itemBuilder: (item) => RadioButtonBuilder(
