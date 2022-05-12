@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'videoView/mobileVideo.dart';
+import 'video_view.dart';
+import 'leftColumn/left_column.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -28,8 +29,23 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Expanded(
-      child: Image.network('http://localhost:8080/snapshot?topic=/image_raw', fit: BoxFit.cover),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Robot Control'),
+      ),
+      body: Row(
+        children: const <Widget>[
+          Expanded(
+            child: LeftRow(),
+          ),
+          Expanded(
+            child: VideoView(),
+          ),
+          Expanded(
+            child: Text('ola'),
+          ),
+        ]
+      ),
     );
   }
 }
