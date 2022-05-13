@@ -2,30 +2,34 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class Robot with ChangeNotifier{
-  
+  // atributes
   int _boxesToTake;
   int _boxesInPallet;
   bool _horizontalSucker;
+  bool _inputDisabled = false;
+  String _logs = '';
 
-  bool _inputDisabled = false; 
-
+  // getters
   int get boxesTotake => _boxesToTake;
   int get boxesInPallet => _boxesInPallet;
   bool get horizontalSucker => _horizontalSucker;
   bool get inputDisabled => _inputDisabled;
+  String get logs => _logs;
 
+  // optional atributes
   String? palletDistributionImg;
-  String? status;
 
+  // Constructor
   Robot(this._boxesToTake, this._boxesInPallet, this._horizontalSucker);
 
+  // mutate vals and notify
   void addBoxesTotake(int boxes){
     _boxesToTake = boxes;
     notifyListeners();
   }
 
   void resetBoxesTotake(){
-    _boxesToTake = 0;
+    _boxesToTake = 1;
     notifyListeners();
   }
 

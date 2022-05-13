@@ -32,7 +32,7 @@ class _LeftColumnState extends State<LeftColumn> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children:[
-                Text('Opciones para tomar cajas', style: Theme.of(context).textTheme.headline6),
+                Text('Opciones para tomar cajas', style: Theme.of(context).textTheme.headline5!.copyWith(fontWeight: FontWeight.w300)),
                 //SizedBox(height: 20,),
                 //Divider(),
                 SizedBox(height: 20,),
@@ -51,7 +51,7 @@ class _LeftColumnState extends State<LeftColumn> {
                   ],
                 ),
                 SizedBox(height: 20,),
-                Text('Distribución estimada de cajas', style: Theme.of(context).textTheme.bodyMedium),
+                Text('Distribución estimada de cajas:', style: Theme.of(context).textTheme.bodyMedium),
                 SizedBox(height: 10,),
                 Image.network(
                   widget.robot.palletDistributionImg ?? 'https://via.placeholder.com/512x512',

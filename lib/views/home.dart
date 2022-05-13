@@ -20,7 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Robot Control', style: Theme.of(context).textTheme.headline3),
+        title: Text('Robot Arm Control', style: Theme.of(context).textTheme.headline3!.copyWith(fontWeight: FontWeight.w300)),
         shadowColor: Colors.transparent,
         centerTitle: true,
       ),
@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('Cajas a recoger de la tarima', style: Theme.of(context).textTheme.bodyMedium),
-                            Text('${robot.boxesTotake} Cajas', style: Theme.of(context).textTheme.headline4),
+                            Text('${robot.boxesTotake} Cajas', style: Theme.of(context).textTheme.headline4!.copyWith(fontWeight: FontWeight.w300)),
                           ],
                         ),
                       ),
@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('Cajas en la tarima del Order picker', style: Theme.of(context).textTheme.bodyMedium),
-                            Text('${robot.boxesInPallet} Cajas', style: Theme.of(context).textTheme.headline4),
+                            Text('${robot.boxesInPallet} Cajas', style: Theme.of(context).textTheme.headline4!.copyWith(fontWeight: FontWeight.w300)),
                           ],
                         ),
                       ),

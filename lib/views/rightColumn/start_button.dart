@@ -31,10 +31,12 @@ class _StartButtonState extends State<StartButton> {
 
         Timer(const Duration(seconds: 3), () {
           _btnController.success();
+          robot.addBoxesToPallet(robot.boxesTotake);
           Timer(const Duration(seconds: 1), () {
             _btnController.reset();
 
             robot.switchInputDisabled();
+            robot.resetBoxesTotake();
           });
       });
       },

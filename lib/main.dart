@@ -23,7 +23,9 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: const ColorScheme.dark(),
-        scaffoldBackgroundColor: const Color.fromRGBO(14,17,23,1.0)
+        scaffoldBackgroundColor: const Color.fromRGBO(14,17,23,1.0),
+        fontFamily: 'Roboto',
+        //textTheme: TextTheme(),
       ),
       home: ChangeNotifierProvider(
         create: (context) => Robot(1, 0, true),
