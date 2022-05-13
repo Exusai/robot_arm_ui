@@ -24,10 +24,9 @@ class _LeftColumnState extends State<LeftColumn> {
       child: Container(
         color: Color.fromRGBO(38,39,48,1.0),
         foregroundDecoration: widget.robot.inputDisabled ? BoxDecoration(color: Colors.black38) : null,
-        // TODO: if not vertical
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 20.0),
+            padding: const EdgeInsets.symmetric(vertical: 50.0, horizontal: 20.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
