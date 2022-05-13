@@ -41,6 +41,7 @@ dependencies:
   rounded_loading_button: ^2.1.0
   dio: ^4.0.6
   provider: ^6.0.2
+  extended_image: ^6.2.0
 
 dev_dependencies:
   flutter_test:

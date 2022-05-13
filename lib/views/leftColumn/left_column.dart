@@ -68,7 +68,10 @@ class _LeftColumnState extends State<LeftColumn> {
                       ),
                     );
                   },
-                )
+                  errorBuilder: (context, exception, stackTrace) {
+                    return Text('No hay conexión con el robot');
+                  },
+                ),
               ],
             ),
           ),
