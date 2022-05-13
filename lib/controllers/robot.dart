@@ -20,9 +20,9 @@ class Robot with ChangeNotifier{
   bool get inputDisabled => _inputDisabled;
   String get logs {
     String logsAsStr = '';
-    _logs.forEach((element) {
+    for (var element in _logs) {
       logsAsStr += element + '\n';
-    });
+    }
 
     return logsAsStr;
   }
@@ -82,12 +82,31 @@ class Robot with ChangeNotifier{
     notifyListeners();
   } 
 
-  void startPicking() async {
+  Future<bool> startPicking() async {
     var dio = Dio();
     
     Response response = await dio.post(robotServer + '/goToOffloadPoint');
     addLog(response.data.toString());
 
+    Timer(const Duration(seconds: 3), () {});
+
+    Response response2 = await dio.post(robotServer + '/estimatePosition');
+    addLog(response2.data.toString());
     
+    Timer(const Duration(seconds: 1), () {});
+
+    //Response response3 = await dio.post(robotServer + '/take&n=${_boxesToTake.toString()}&horizontal=${_horizontalSucker.toString()}');
+    //Response response3 = await dio.post(robotServer + '/take', data: {'n': _boxesToTake, 'horizontal': _horizontalSucker});
+    Response response3 = await dio.post(robotServer + '/take', queryParameters: {'n': _boxesToTake.toString(), 'horizontal': _horizontalSucker.toString()});
+    addLog(response3.data.toString());
+
+    bool finished = true;
+    if (response3.data.toString() != "error"){
+      finished = true;
+    } else {
+      finished = false;
+    }
+
+    return finished;
   } 
 }

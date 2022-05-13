@@ -28,17 +28,23 @@ class _StartButtonState extends State<StartButton> {
       controller: _btnController,
       onPressed: () async {
         robot.switchInputDisabled();
-        robot.startPicking();
-        Timer(const Duration(seconds: 3), () {
-          _btnController.success();
-          robot.addBoxesToPallet(robot.boxesTotake);
-          Timer(const Duration(seconds: 1), () {
-            _btnController.reset();
+        bool success = await robot.startPicking();
 
-            robot.switchInputDisabled();
-            robot.resetBoxesTotake();
-          });
-      });
+        // if success
+        if (success){
+          _btnController.success();
+          _btnController.reset();
+          robot.addBoxesToPallet(robot.boxesTotake);
+          robot.switchInputDisabled();
+          robot.resetBoxesTotake();
+        } else {
+          robot.addLog('ERROR');
+          _btnController.error();
+          Timer(const Duration(seconds: 3), () {});
+          _btnController.reset();
+          robot.switchInputDisabled();
+          robot.resetBoxesTotake();
+        }
       },
     );
   }

@@ -23,7 +23,7 @@ class _StatusConsoleState extends State<StatusConsole> {
       child: Text(robot.logs,
         textAlign: TextAlign.left,
         maxLines: 10,
-        style: const TextStyle(fontWeight: FontWeight.w300, fontSize: 15.0, letterSpacing: 2.0,height: 1.5),
+        style: const TextStyle(fontWeight: FontWeight.w300, fontSize: 12.0, letterSpacing: 2.0,height: 1.5),
       ),
     );
   }
