@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
+import 'dart:collection';
 
 class Robot with ChangeNotifier{
   // atributes
@@ -7,17 +9,26 @@ class Robot with ChangeNotifier{
   int _boxesInPallet;
   bool _horizontalSucker;
   bool _inputDisabled = false;
-  String _logs = '';
+  final Queue _logs = Queue<String>();
+
+  String palletDistributionImg = 'http://0.0.0.0:5000/getPalletDist';
 
   // getters
   int get boxesTotake => _boxesToTake;
   int get boxesInPallet => _boxesInPallet;
   bool get horizontalSucker => _horizontalSucker;
   bool get inputDisabled => _inputDisabled;
-  String get logs => _logs;
+  String get logs {
+    String logsAsStr = '';
+    _logs.forEach((element) {
+      logsAsStr += element + '\n';
+    });
 
-  // optional atributes
-  String? palletDistributionImg;
+    return logsAsStr;
+  }
+
+  // final atributes
+  final String robotServer = 'http://0.0.0.0:5000';
 
   // Constructor
   Robot(this._boxesToTake, this._boxesInPallet, this._horizontalSucker);
@@ -48,18 +59,35 @@ class Robot with ChangeNotifier{
     notifyListeners();
   }
 
+  void addLog(String newLog){
+    if (_logs.length >= 10){
+      _logs.removeFirst();
+    }
+    _logs.addLast(newLog);
+    notifyListeners();
+  }
+
   // TODO: get status from server
 
-  // TODO: func to get box distribution img
   Future<void> changeBoxType(String newBoxType) async {
     // pass new box type to server and wait for updated URL
-    Timer(const Duration(seconds: 1), () {});
     print(newBoxType);
-    palletDistributionImg = 'https://dummyimage.com/512x512/fff/aaa';
+    
+    // simulates awaiting for new requested box type
+    Timer(const Duration(seconds: 1), () {});
+
+    // new url with new ident or something
+    palletDistributionImg = robotServer + '/getPalletDist';
+
     notifyListeners();
   } 
 
-  void startPicking() async {}
+  void startPicking() async {
+    var dio = Dio();
+    
+    Response response = await dio.post(robotServer + '/goToOffloadPoint');
+    addLog(response.data.toString());
 
-  
+    
+  } 
 }

@@ -53,7 +53,7 @@ class _LeftColumnState extends State<LeftColumn> {
                 Text('Distribución estimada de cajas:', style: Theme.of(context).textTheme.bodyMedium),
                 SizedBox(height: 10,),
                 Image.network(
-                  widget.robot.palletDistributionImg ?? 'https://via.placeholder.com/512x512',
+                  widget.robot.palletDistributionImg,
                   height: 385,
                   width: 512,
                   loadingBuilder: (context, child, loadingProgress) {

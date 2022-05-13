@@ -28,7 +28,7 @@ class _StartButtonState extends State<StartButton> {
       controller: _btnController,
       onPressed: () async {
         robot.switchInputDisabled();
-
+        robot.startPicking();
         Timer(const Duration(seconds: 3), () {
           _btnController.success();
           robot.addBoxesToPallet(robot.boxesTotake);

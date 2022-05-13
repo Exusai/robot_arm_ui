@@ -14,9 +14,9 @@ class _VideoViewState extends State<VideoView> {
   // on rebuild clear cache
   @override
   Widget build(BuildContext context) {
-    return TimerBuilder.periodic(const Duration(milliseconds:  1000),
+    return TimerBuilder.periodic(const Duration(milliseconds: 1000),
       builder: (context) {
-        //String url = 'http://localhost:8080/snapshot?topic=/image_raw&v=${Random().nextInt(1000)}';
+        //String url = 'http://localhost:8080/snapshot?topic=/image_raw&v=${Random().nextInt(100)}';
         String url = 'https://via.placeholder.com/512x512';
         return Image.network(
           url,
