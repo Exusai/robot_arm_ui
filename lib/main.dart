@@ -1,11 +1,11 @@
-import 'package:dart_vlc/dart_vlc.dart';
+//import 'package:dart_vlc/dart_vlc.dart';
 import 'package:flutter/material.dart';
 import 'package:robot_arm_ui/controllers/robot.dart';
 import 'views/home.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  DartVLC.initialize();
+  //DartVLC.initialize();
   
   runApp(const MyApp());
 }

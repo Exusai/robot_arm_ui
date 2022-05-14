@@ -67,8 +67,6 @@ class Robot with ChangeNotifier{
     notifyListeners();
   }
 
-  // TODO: get status from server
-
   Future<void> changeBoxType(String newBoxType) async {
     // pass new box type to server and wait for updated URL
     print(newBoxType);
@@ -88,12 +86,12 @@ class Robot with ChangeNotifier{
     Response response = await dio.post(robotServer + '/goToOffloadPoint');
     addLog(response.data.toString());
 
-    Timer(const Duration(seconds: 5), () {});
+    //Timer(const Duration(seconds: 5), () {});
 
     Response response2 = await dio.post(robotServer + '/estimatePosition');
     addLog(response2.data.toString());
     
-    Timer(const Duration(seconds: 1), () {});
+    //Timer(const Duration(seconds: 1), () {});
 
     //Response response3 = await dio.post(robotServer + '/take&n=${_boxesToTake.toString()}&horizontal=${_horizontalSucker.toString()}');
     //Response response3 = await dio.post(robotServer + '/take', data: {'n': _boxesToTake, 'horizontal': _horizontalSucker});

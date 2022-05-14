@@ -1,9 +1,5 @@
-import 'dart:math';
 import 'package:dart_vlc/dart_vlc.dart';
-import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
-import 'package:timer_builder/timer_builder.dart';
-
 
 class VideoView extends StatefulWidget {
   const VideoView({Key? key}) : super(key: key);
