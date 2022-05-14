@@ -23,7 +23,8 @@ class _RadialMenuState extends State<RadialMenu> {
       onChanged: (String? value) => setState(() {
         radialValue = value!;
         //widget.robot.horizontalSucker = !widget.robot.horizontalSucker;
-        print(robot.horizontalSucker);
+        //print(robot.horizontalSucker);
+        robot.switchSuckers();
       }),
       items: _status,
       itemBuilder: (item) => RadioButtonBuilder(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:robot_arm_ui/views/centerColumn/video_view.dart' if (dart.library.html) 'package:robot_arm_ui/views/centerColumn/video_view_web_and_mobile.dart' as multi_platform;
+//import 'package:robot_arm_ui/views/centerColumn/video_view.dart' if (dart.library.html) 'package:robot_arm_ui/views/centerColumn/video_view_web_and_mobile.dart' as multi_platform;
+import 'package:robot_arm_ui/views/centerColumn/video_view_general.dart';
 /* import 'dart:io' show Platform; */
 
 
@@ -19,10 +20,9 @@ class _CenterColumnState extends State<CenterColumn> {
     else { mobile = true; } */
 
     return Container(
-      height: 385,
-      width: 512,
       padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
-      child: const multi_platform.VideoView(),
+      //child: const multi_platform.VideoView(),
+      child: const VideoViewerGeneral(),
     );
   }
 }

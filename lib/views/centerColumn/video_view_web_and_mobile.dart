@@ -15,6 +15,7 @@ class _VideoViewState extends State<VideoView> {
   void initState() {
     super.initState();
     _controller = VideoPlayerController.network(
+      //mjpeg, vp8, ros_compressed, png, h264
       'http://localhost:8080/stream?topic=/image_raw&bitrate=250000',
       //'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
       videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),

@@ -10,6 +10,7 @@ class Robot with ChangeNotifier{
   bool _horizontalSucker;
   bool _inputDisabled = false;
   final Queue _logs = Queue<String>();
+  String robotServer = 'http://0.0.0.0';
 
   String palletDistributionImg = 'http://0.0.0.0:5000/getPalletDist';
 
@@ -27,9 +28,6 @@ class Robot with ChangeNotifier{
     return logsAsStr;
   }
 
-  // final atributes
-  final String robotServer = 'http://0.0.0.0:5000';
-
   // Constructor
   Robot(this._boxesToTake, this._boxesInPallet, this._horizontalSucker);
 
@@ -45,7 +43,7 @@ class Robot with ChangeNotifier{
   }
 
   void addBoxesToPallet(int boxes){
-    _boxesInPallet = boxes;
+    _boxesInPallet += boxes;
     notifyListeners();
   }
 
@@ -67,6 +65,11 @@ class Robot with ChangeNotifier{
     notifyListeners();
   }
 
+  void changeRobotServer(String newServer){
+    robotServer = newServer;
+    notifyListeners();
+  }
+
   Future<void> changeBoxType(String newBoxType) async {
     // pass new box type to server and wait for updated URL
     print(newBoxType);
@@ -75,7 +78,7 @@ class Robot with ChangeNotifier{
     Timer(const Duration(seconds: 1), () {});
 
     // new url with new ident or something
-    palletDistributionImg = robotServer + '/getPalletDist';
+    palletDistributionImg = robotServer + ':5000/getPalletDist';
 
     notifyListeners();
   } 
@@ -83,19 +86,19 @@ class Robot with ChangeNotifier{
   Future<bool> startPicking() async {
     var dio = Dio();
     
-    Response response = await dio.post(robotServer + '/goToOffloadPoint');
+    Response response = await dio.post(robotServer + ':5000/goToOffloadPoint');
     addLog(response.data.toString());
 
     //Timer(const Duration(seconds: 5), () {});
 
-    Response response2 = await dio.post(robotServer + '/estimatePosition');
+    Response response2 = await dio.post(robotServer + ':5000/estimatePosition');
     addLog(response2.data.toString());
     
     //Timer(const Duration(seconds: 1), () {});
 
     //Response response3 = await dio.post(robotServer + '/take&n=${_boxesToTake.toString()}&horizontal=${_horizontalSucker.toString()}');
     //Response response3 = await dio.post(robotServer + '/take', data: {'n': _boxesToTake, 'horizontal': _horizontalSucker});
-    Response response3 = await dio.post(robotServer + '/take', queryParameters: {'n': _boxesToTake.toString(), 'horizontal': _horizontalSucker.toString()});
+    Response response3 = await dio.post(robotServer + ':5000/take', queryParameters: {'n': _boxesToTake.toString(), 'horizontal': _horizontalSucker.toString()});
     addLog(response3.data.toString());
 
     bool finished = true;
