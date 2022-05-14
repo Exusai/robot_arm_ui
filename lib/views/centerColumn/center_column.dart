@@ -12,14 +12,10 @@ class _CenterColumnState extends State<CenterColumn> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 385,
+      width: 512,
       padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          VideoView(),
-        ],
-      ),
+      child: const VideoView(),
     );
   }
 }

@@ -88,7 +88,7 @@ class Robot with ChangeNotifier{
     Response response = await dio.post(robotServer + '/goToOffloadPoint');
     addLog(response.data.toString());
 
-    Timer(const Duration(seconds: 3), () {});
+    Timer(const Duration(seconds: 5), () {});
 
     Response response2 = await dio.post(robotServer + '/estimatePosition');
     addLog(response2.data.toString());

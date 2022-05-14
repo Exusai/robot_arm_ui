@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:dart_vlc/dart_vlc.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:timer_builder/timer_builder.dart';
@@ -13,7 +14,29 @@ class VideoView extends StatefulWidget {
 
 class _VideoViewState extends State<VideoView> {
   // on rebuild clear cache
+  final stream = Media.network(
+    'http://localhost:8080/stream?topic=/image_raw&bitrate=250000'
+  );
+
+  Player player = Player(id: 69420, videoDimensions: const VideoDimensions(512, 512),);
+
   @override
+  Widget build(BuildContext context) {
+    player.open(
+      stream,
+      autoStart: true, // default
+    );
+    
+    return Video(
+      player: player,
+      height: 512,
+      width: 512,
+      showControls: false,
+      scale: 1,
+    );
+  }  
+  
+  /* @override
   Widget build(BuildContext context) {
     return TimerBuilder.periodic(const Duration(milliseconds: 1000),
       builder: (context) {
@@ -26,5 +49,5 @@ class _VideoViewState extends State<VideoView> {
         );
       }
     );
-  }  
+  }   */
 }
