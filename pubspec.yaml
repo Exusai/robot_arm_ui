@@ -34,14 +34,14 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  video_player: ^2.4.2
+  #video_player: ^2.4.2
   timer_builder: ^2.0.0
   group_radio_button: ^1.2.0
   flutter_number_picker: ^1.0.4
   rounded_loading_button: ^2.1.0
   dio: ^4.0.6
   provider: ^6.0.2
-  dart_vlc: ^0.2.0
+  #dart_vlc: ^0.2.0
   flutter_mjpeg: ^2.0.1
 
 dev_dependencies:
