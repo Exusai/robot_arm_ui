@@ -17,6 +17,7 @@ class _RadialMenuState extends State<RadialMenu> {
   @override
   Widget build(BuildContext context) {
     final Robot robot = context.watch<Robot?>()!;
+    radialValue = robot.horizontalSucker ? 'Horizontal' : 'Vertical';
 
     return RadioGroup<String>.builder(
       groupValue: radialValue,

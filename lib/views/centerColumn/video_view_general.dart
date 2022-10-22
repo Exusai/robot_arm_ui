@@ -23,6 +23,20 @@ class _VideoViewerGeneralState extends State<VideoViewerGeneral> {
       timeout: const Duration(seconds: 30),
       height: 512,
       width: 512,
+      error: (contet, error, stack) {
+        return const SizedBox(
+          height: 512,
+          width: 512,
+          child: Center(child: Text('Error, no hay conexión con el robot'),),
+        );
+      },
+      loading: (context) {
+        return const SizedBox(
+          height: 512,
+          width: 512,
+          child: Center(child: CircularProgressIndicator(),),
+        );
+      },
     );
   }
 }

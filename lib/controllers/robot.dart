@@ -72,7 +72,7 @@ class Robot with ChangeNotifier{
 
   Future<void> changeBoxType(String newBoxType) async {
     // pass new box type to server and wait for updated URL
-    print(newBoxType);
+    //print(newBoxType);
     
     // simulates awaiting for new requested box type
     Timer(const Duration(seconds: 1), () {});

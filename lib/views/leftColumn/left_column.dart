@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 //import 'package:provider/provider.dart';
@@ -89,24 +90,25 @@ class _LeftColumnState extends State<LeftColumn> {
                 SizedBox(height: 20,),
                 Text('Distribución estimada de cajas:', style: Theme.of(context).textTheme.bodyMedium),
                 SizedBox(height: 10,),
-                Image.network(
-                  widget.robot.palletDistributionImg,
-                  height: 385,
-                  width: 512,
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) {
-                      return child;
-                    }
-                    return Center(
-                      child: CircularProgressIndicator(
-                        value: loadingProgress.expectedTotalBytes != null
-                          ? loadingProgress.cumulativeBytesLoaded / 512*512*8
-                          : null,
+                CachedNetworkImage(
+                  imageUrl: widget.robot.palletDistributionImg,
+                  placeholder: (context, url) {
+                    return Container(
+                      color: Colors.black,
+                      height: 385,
+                      width: 512,
+                      child: Center(
+                        child: CircularProgressIndicator(),
                       ),
                     );
                   },
-                  errorBuilder: (context, exception, stackTrace) {
-                    return Text('No hay conexión con el robot');
+                  errorWidget: (context, url, error) {
+                    return Container(
+                      color: Colors.black,
+                      height: 385,
+                      width: 512,
+                      child: Center(child: Text('No hay conexión con el robot')),
+                    );
                   },
                 ),
               ],

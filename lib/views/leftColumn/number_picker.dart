@@ -23,7 +23,7 @@ class _NumberPickerState extends State<NumberPicker> {
       onValue: (num value) {
         setState(() {
           robot.addBoxesTotake(value.toInt());
-          print(robot.boxesTotake);
+          //print(robot.boxesTotake);
         });
       },
     );
