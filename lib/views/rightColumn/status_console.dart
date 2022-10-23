@@ -18,11 +18,11 @@ class _StatusConsoleState extends State<StatusConsole> {
     return Container(
       color: Colors.black,
       padding: const EdgeInsets.all(10.0),
-      height: 320,
+      height: 325,
       width: 400,
       child: Text(robot.logs,
         textAlign: TextAlign.left,
-        maxLines: 10,
+        maxLines: 17,
         style: const TextStyle(fontWeight: FontWeight.w300, fontSize: 12.0, letterSpacing: 2.0,height: 1.5),
       ),
     );

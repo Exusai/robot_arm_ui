@@ -16,11 +16,11 @@ class _VideoViewerGeneralState extends State<VideoViewerGeneral> {
   @override
   Widget build(BuildContext context) {
     final Robot robot = context.watch<Robot?>()!;
-    final String streamURL = robot.robotServer + ':8080/stream?topic=/image_raw';
+    String streamURL = robot.robotServer + ':8080/stream?topic=/gripper_cam';
     return Mjpeg(
       stream: streamURL,
       isLive: true,
-      timeout: const Duration(seconds: 30),
+      timeout: const Duration(seconds: 10),
       height: 512,
       width: 512,
       error: (contet, error, stack) {

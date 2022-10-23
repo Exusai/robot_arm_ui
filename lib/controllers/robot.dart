@@ -12,7 +12,7 @@ class Robot with ChangeNotifier{
   final Queue _logs = Queue<String>();
   String robotServer = 'http://0.0.0.0';
 
-  String palletDistributionImg = 'http://0.0.0.0:5000/getPalletDist';
+  String palletDistributionImg = ':5000/getPalletDist';
 
   // getters
   int get boxesTotake => _boxesToTake;
@@ -58,7 +58,7 @@ class Robot with ChangeNotifier{
   }
 
   void addLog(String newLog){
-    if (_logs.length >= 10){
+    if (_logs.length >= 17){
       _logs.removeFirst();
     }
     _logs.addLast(newLog);
@@ -68,6 +68,7 @@ class Robot with ChangeNotifier{
   void changeRobotServer(String newServer){
     robotServer = newServer;
     notifyListeners();
+    addLog("Cambiando servidor a: $robotServer");
   }
 
   Future<void> changeBoxType(String newBoxType) async {

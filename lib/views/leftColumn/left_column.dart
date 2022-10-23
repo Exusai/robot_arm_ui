@@ -18,6 +18,9 @@ class LeftColumn extends StatefulWidget {
 }
 
 class _LeftColumnState extends State<LeftColumn> {
+  // tex editing controllers
+  final TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final Robot robot = context.watch<Robot?>()!;
@@ -40,6 +43,7 @@ class _LeftColumnState extends State<LeftColumn> {
                   initiallyExpanded: false,
                   children: [
                     TextField(
+                      controller: controller,
                       enabled: true,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
@@ -48,7 +52,6 @@ class _LeftColumnState extends State<LeftColumn> {
                       onChanged: (text){
                         newURL = text;
                       },
-
                     ),
                     SizedBox(height: 10,),
                     Container(
@@ -56,10 +59,12 @@ class _LeftColumnState extends State<LeftColumn> {
                       child: ElevatedButton(
                         onPressed: (() {
                           setState(() {
-                            if (newURL == ''){
+                            if (controller.text.isEmpty){
                               newURL = 'http://localhost';
+                              robot.changeRobotServer(newURL);
+                            } else {
+                              robot.changeRobotServer(controller.text);
                             }
-                            robot.changeRobotServer(newURL);
                           });
                         }), 
                         child: Text("Conectarse")
